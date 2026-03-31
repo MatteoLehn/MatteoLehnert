@@ -125,28 +125,77 @@
     }
     .footer-bar.visible { opacity: 0.35; }
 
-    @media (max-width: 680px) {
-      .page { padding: 80px 20px 36px; gap: 20px; }
-      #hero { padding: 56px 20px; }
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .grid-2 { grid-template-columns: 1fr; gap: 20px; }
-      .hero-name { font-size: 18vw; }
-      .footer-bar { padding: 12px 20px; }
-      .about-photo { max-width: 100%; }
-    }
+  @media (max-width: 374px) {
+  .page { padding: 60px 16px 32px; gap: 16px; }
+  #hero { padding: 40px 16px; justify-content: center; align-items: center; }
+  nav { padding: 12px 16px; }
+  .hero-name { font-size: 32px; text-align: center; }
+  .footer-bar { padding: 10px 16px; font-size: 9px; }
+  .section-header { padding-bottom: 6px; }
+  h2 { font-size: 10px; }
+  .item-title { font-size: 15px; }
+  .item-desc { font-size: 12px; }
+  .tag { font-size: 11px; padding: 3px 10px; }
+  .stack-list { gap: 6px; }
+  .about-photo { max-width: 100%; margin: 0 auto; }
+}
 
-    @media (min-width: 1200px) {
-      .page {
-        padding: 90px 72px 48px;
-        gap: 28px;
-      }
-      #hero {
-        padding: 72px 72px;
-      }
-      nav { padding: 18px 72px; }
-      .footer-bar { padding: 12px 72px; }
-    }
+/* iPhone 15 & kleine Phones (375px - 480px) */
+@media (min-width: 375px) and (max-width: 480px) {
+  .page { padding: 70px 18px 34px; gap: 18px; }
+  #hero { padding: 50px 18px; justify-content: center; align-items: center; }
+  nav { padding: 14px 18px; }
+  .hero-name { font-size: 40px; text-align: center; }
+  .nav-name { font-size: 11px; }
+  .footer-bar { padding: 10px 18px; font-size: 10px; }
+  .section-header { padding-bottom: 7px; }
+  h2 { font-size: 10px; }
+  .item-title { font-size: 16px; }
+  .item-desc { font-size: 13px; }
+  .tag { font-size: 12px; padding: 4px 11px; }
+  .stack-list { gap: 7px; }
+  .about-photo { max-width: 100%; margin: 0 auto; }
+  .grid-2 { grid-template-columns: 1fr; gap: 18px; }
+  .timeline { padding-left: 18px; }
+  .tl-item::before { left: -22px; }
+}
+
+/* Kleine bis mittlere Tablets (481px - 680px) */
+@media (min-width: 481px) and (max-width: 680px) {
+  .page { padding: 75px 24px 36px; gap: 22px; }
+  #hero { padding: 56px 24px; justify-content: center; align-items: center; }
+  nav { padding: 16px 24px; }
+  .hero-name { font-size: 48px; text-align: center; }
+  .footer-bar { padding: 11px 24px; }
+  .grid-2 { grid-template-columns: 1fr; gap: 22px; }
+  .about-photo { max-width: 100%; margin: 0 auto; }
+}
+
+/* Mittlere Tablets (681px - 900px) */
+@media (min-width: 681px) and (max-width: 900px) {
+  .page { padding: 80px 32px 40px; gap: 24px; }
+  #hero { padding: 60px 32px; }
+  nav { padding: 17px 32px; }
+  .hero-name { font-size: clamp(48px, 8vw, 100px); }
+  .footer-bar { padding: 12px 32px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; gap: 28px 40px; }
+}
+
+/* Große Tablets & Desktop (901px - 1199px) */
+@media (min-width: 901px) and (max-width: 1199px) {
+  .page { padding: 85px 50px 44px; gap: 26px; }
+  #hero { padding: 66px 50px; }
+  nav { padding: 18px 50px; }
+  .footer-bar { padding: 12px 50px; }
+}
+
+/* Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .page { padding: 90px 72px 48px; gap: 28px; }
+  #hero { padding: 72px 72px; }
+  nav { padding: 18px 72px; }
+  .footer-bar { padding: 12px 72px; }
+}
   </style>
 </head>
 <body>
