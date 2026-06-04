@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8">
   <title>Matteo – Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap');
 
@@ -12,9 +18,24 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Lora', serif, 'Space Grotesk', sans-serif;
       height: 100%;
       cursor: crosshair;
+    }
+
+    /* Lora helper class per your template */
+    .lora-main {
+      font-family: "Lora", serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    /* Better sans for footer */
+    .footer-sans {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      font-weight: 500;
+      font-style: normal;
     }
     a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
     a:hover { opacity: 0.6; }
@@ -38,10 +59,11 @@
     .nav-links a:hover { opacity: 1; }
 
     .page {
-      min-height: 100vh;
+      /* let sections size to their content to avoid huge empty blue gaps */
+      min-height: auto;
       padding: 80px 40px 40px;
       position: relative;
-      border-top: 1px solid rgba(255,255,255,0.12);
+      border-top: none; /* removed section separators */
       will-change: transform;
       transition: transform 0.25s ease;
       display: grid;
@@ -56,6 +78,7 @@
       justify-content: flex-end;
       align-items: flex-end;
       padding: 56px 40px;
+      /* ensure homepage shows only the blue hero area initially */
       min-height: 100vh;
     }
     .hero-name {
@@ -77,10 +100,12 @@
 
     .section-header {
       display: flex; justify-content: space-between; align-items: baseline;
-      border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 8px;
+      padding-bottom: 8px;
+      position: relative;
     }
-    h2 { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.5; }
-    .section-num { font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.25; }
+    /* removed section underline separators per request */
+    h2 { font-family: 'Lora', serif; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.9; }
+    .section-num { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; opacity: 0.9; letter-spacing: 0.06em; }
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; align-content: start; }
 
@@ -96,28 +121,59 @@
       object-position: top center;
       display: block;
       filter: grayscale(15%) contrast(1.05);
-      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
     }
 
     .stack-list { display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; }
     .tag {
-      border: 1px solid rgba(255,255,255,0.3); padding: 4px 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 6px 14px;
       font-size: 12px; font-family: 'Space Mono', monospace; letter-spacing: 0.05em;
-      transition: background 0.2s, border-color 0.2s; cursor: default;
+      border-radius: 999px;
+      color: var(--text);
+      opacity: 0.95;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25) inset;
+      cursor: default;
     }
-    .tag:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+    .tag:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.45) inset; }
 
-    .timeline { position: relative; padding-left: 20px; }
-    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: rgba(255,255,255,0.2); }
+    /* timeline: vertical glow and dots centered on it */
+    .timeline { position: relative; padding-left: 44px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px; /* glow x-position */
+      top: 8px;
+      bottom: 8px;
+      width: 4px;
+      border-radius: 3px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+      box-shadow: 0 8px 22px rgba(0,0,0,0.18), 0 0 16px rgba(255,255,255,0.02) inset;
+      filter: blur(0.8px);
+      opacity: 0.95;
+    }
     .tl-item { position: relative; margin-bottom: 26px; }
-    .tl-item::before { content: ''; position: absolute; left: -24px; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--text); border: 2px solid var(--bg); box-shadow: 0 0 0 1px rgba(255,255,255,0.4); }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -34px; /* negative so dot overlaps the glow at left:16px */
+      top: px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--text);
+      border: 2px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    }
     .tl-date { font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.4; margin-bottom: 4px; }
     .tl-title { font-size: 15px; font-weight: 600; }
     .tl-sub { font-size: 13px; opacity: 0.6; margin-top: 2px; }
 
     .footer-bar {
       position: fixed; bottom: 0; left: 0; right: 0;
-      display: flex; justify-content: space-between;
+      display: flex; justify-content: center; gap: 10px;
       padding: 12px 40px; font-family: 'Space Mono', monospace;
       font-size: 11px; letter-spacing: 0.08em;
       pointer-events: none; z-index: 100;
@@ -138,6 +194,9 @@
   .tag { font-size: 11px; padding: 3px 10px; }
   .stack-list { gap: 6px; }
   .about-photo { max-width: 100%; margin: 0 auto; }
+  .timeline { padding-left: 36px; }
+  .timeline::before { left: 14px; width: 3px; }
+  .tl-item::before { left: -22px; width: 10px; height: 10px; }
 }
 
 /* iPhone 15 & kleine Phones (375px - 480px) */
@@ -156,8 +215,9 @@
   .stack-list { gap: 7px; }
   .about-photo { max-width: 100%; margin: 0 auto; }
   .grid-2 { grid-template-columns: 1fr; gap: 18px; }
-  .timeline { padding-left: 18px; }
-  .tl-item::before { left: -22px; }
+  .timeline { padding-left: 36px; }
+  .timeline::before { left: 14px; width: 3px; }
+  .tl-item::before { left: -22px; width: 10px; height: 10px; }
 }
 
 /* Kleine bis mittlere Tablets (481px - 680px) */
@@ -216,7 +276,7 @@
   <section class="page" id="about">
     <div class="section-header">
       <h2>About</h2>
-      <span class="section-num">01</span>
+      <span class="section-num"></span>
     </div>
     <div>
       <div class="grid-2" style="margin-bottom: 40px; align-items: start;">
@@ -235,7 +295,7 @@
             <div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.45; margin-bottom:14px;"></div>
             <p style="font-size:13px; opacity:0.7; line-height:2.2;">
               <span class="status-dot"></span>
-              Zürich, CH - UTC+2<br>
+              Zürich, CH<br>
               2007 geboren<br>
               <a href="mailto:matteolehnert@gmail.com" style="text-decoration:none; opacity:1;">matteolehnert@gmail.com</a>
             </p>
@@ -253,7 +313,7 @@
   <section class="page" id="stack">
     <div class="section-header">
       <h2>Was ich kann</h2>
-      <span class="section-num">02</span>
+      <span class="section-num"></span>
     </div>
     <div>
       <div class="grid-2" style="margin-bottom: 36px;">
@@ -283,7 +343,7 @@
   <section class="page" id="experience">
     <div class="section-header">
       <h2>Erfahrungen &amp; Bildung</h2>
-      <span class="section-num">03</span>
+      <span class="section-num"></span>
     </div>
     <div class="grid-2">
       <div class="timeline">
@@ -291,13 +351,13 @@
           <div class="tl-date">2023 – heute</div>
           <div class="tl-title">Plattformenentwickler EFZ</div>
           <div class="tl-sub">Sunrise GmbH, Zürich</div>
-          <p class="item-desc" style="margin-top:8px;">Basislehrjahr im BBC. Routing-Grundlagen in IP-Transport. Linux im Unix Department. Cisco, Huawei und Juniper Infrastruktur im Alltag.</p>
+          <p class="item-desc" style="margin-top:8px;">Basislehrjahr im BBC. Routing-Grundlagen in IP-Transport. Linux im Unix Department. Cisco, Huawei und Juniper Infrastruktur als Tiefpunkt.</p>
         </div>
         <div class="tl-item">
           <div class="tl-date">2023 – heute</div>
           <div class="tl-title">Berufsfachschule</div>
-          <div class="tl-sub">Informatik, Zürich</div>
-          <p class="item-desc" style="margin-top:8px;">Grundlagen der Informatik, Netzwerktechnik und Softwareentwicklung.</p>
+          <div class="tl-sub">BBW Berufsbildungsschule Winterthur, Zürich</div>
+          <p class="item-desc" style="margin-top:8px;">Grundlagen der Informatik. Abschluss aller Module der Informatikausbildung.</p>
         </div>
       </div>
       <div>
@@ -313,9 +373,7 @@
   </section>
 
   <div class="footer-bar" id="main-footer">
-    <span>Zürich — CH</span>
-    <span id="clock"></span>
-    <span>© 2026 Matteo</span>
+    <span id="clock" class="footer-sans"></span>
   </div>
 
   <script>
@@ -367,7 +425,7 @@
     window.addEventListener('scroll', () => {
       if (!ticking) { requestAnimationFrame(applySkew); ticking = true; }
     });;
-      reader.readAsDataURL(file);
+  
   </script>
 
 </body>
